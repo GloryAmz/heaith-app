@@ -8,7 +8,6 @@ def add_aggregate_metrics(df):
     return df
 
 def add_health_ratios(df):
-    # Example: Adding BMI or activity-to-rest ratio
     df['activity_to_rest_ratio'] = df['steps'] / df['rest']
     return df
 from sklearn.cluster import KMeans
@@ -18,7 +17,7 @@ def cluster_users(df, num_clusters=3):
     df['fitness_profile'] = kmeans.fit_predict(df[['avg_daily_steps', 'BMI', 'calorie_intake']])
     return df
 def collaborative_filtering_recommendation(user_data):
-    # Placeholder function: Implement collaborative filtering if possible
+    
     pass
 
 def rule_based_recommendation(user_row):
@@ -41,9 +40,9 @@ def train_recommendation_model(X, y):
     model = DecisionTreeClassifier()
     model.fit(X, y)
     return model
-# Use model to predict recommendations based on features
+
 def evaluate_recommendations(df, feedback_column):
-    # Simple metric: calculate user satisfaction score
+    
     satisfaction_score = df[feedback_column].mean()
     return satisfaction_score
 import pandas as pd
@@ -64,7 +63,7 @@ def show_dashboard():
     st.title("Personalized Health Recommendation System")
     df = load_data()
     
-    # Create the 'recommendation' column
+    
     df['recommendation'] = df.apply(generate_recommendation, axis=1)
     
     st.dataframe(df[['user_id', 'recommendation', 'avg_daily_steps', 'bmi']])
